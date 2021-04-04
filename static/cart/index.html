@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <link href="http://localhost:2000/warehouse.ico" type="image/icon" rel="icon"/>
+    <link href="http://localhost:2000/cart/style.css" rel="stylesheet" type="text/css"/>
+    <link href="http://localhost:2045/fontawesome.css" rel="stylesheet" type="text/css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+    </style>
+</head>
+<body>
+    <div id="header">
+        <label style="font-size: x-large;margin: auto 10px auto 20px"><i class="fal fa-warehouse-alt" style="margin-right: 10px;color: white;"></i>TheWarehouse</label>
+        <div id="search-div">
+            <label id="search-div-1">
+                <input type="text" id="search-input" placeholder="Forage The Warehouse">
+                <i id="search-clear" class="fal fa-search" style="transform: scale(1);margin: auto 0 auto -20px;color: #4A148C;"></i>
+            </label>
+            <div id="search-results"></div>
+        </div>
+            <label style="margin: auto auto auto 0;max-width: 150px;text-overflow:ellipsis;white-space: nowrap;overflow: hidden">
+                <i class="fal fa-location" style="margin-right: 10px"></i>
+                <label id="location" style="max-width: 100px;font-size: small;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">dshjdbfhjdbfhjbdsfkjsdnfknfhjdbfjsdbklsdf</label></label>
+        <div id="side-options">
+            <label id="username" style="margin-right: 20px">jkdsnfjs</label>
+            <label id="signin-warning"  class="cursor" style="margin-right: 10px"></label>
+            <i id="cart" class="cursor fal fa-shopping-cart transform" style="margin: auto 15px;color: white"></i>
+            <i id="settings" class="cursor fal fa-cog transform" style="margin: auto 15px;color:white;"></i>
+        </div>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <label id="home" class="sidebarobj cursor"><i class="fal fa-box-full transform"  style="margin-right: 10px"></i>Storage</label>
+            <label id="orders" class="sidebarobj cursor"><i class="fal fa-shopping-basket transform" style="margin-right: 10px"></i>My orders</label>
+            <label id="payment" class="sidebarobj cursor"><i class="far fa-credit-card-front transform" style="margin-right: 10px"></i>Payment</label>
+            <label id="address" class="sidebarobj cursor"><i class="fal fa-address-book transform" style="margin-right: 10px"></i>Address</label>
+        </div>
+        <div id="container-lvl1">
+            <div id="options">
+                <i class="fas fa-chevron-left" id="back" style="transform: scale(1);margin: auto 10px"></i>
+                <label style="margin: auto 10px;font-size: large;"><i class="fal fa-shopping-cart" style="margin: auto 20px auto 10px;transform: scale(1.5)"></i>Cart</label>
+            </div>
+            <div id="container-lvl2">
+
+            </div>
+        </div>
+    </div>
+    <div id="pop-up">
+        <label id="msg">jdsnfdnkjd</label>
+    </div>
+</body>
+</html>
+
+<script src="http://localhost:2000/cart/script.js"></script>

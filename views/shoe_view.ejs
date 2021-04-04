@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <link href="http://localhost:2000/warehouse.ico" type="image/icon" rel="icon"/>
+    <link href="http://localhost:2000/shoe_view/style.css" rel="stylesheet" type="text/css"/>
+    <link href="http://localhost:2045/fontawesome.css" rel="stylesheet" type="text/css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+    </style>
+</head>
+<body>
+    <div id="header">
+        <label style="font-size: x-large;margin: auto 10px auto 20px"><i class="fal fa-warehouse-alt" style="margin-right: 10px;color: white;"></i>TheWarehouse</label>
+        <div id="search-div">
+            <label id="search-div-1">
+                <input type="text" id="search-input" placeholder="Forage The Warehouse">
+                <i id="search-clear" class="fal fa-search" style="transform: scale(1);margin: auto 0 auto -20px;color: #4A148C;"></i>
+            </label>
+            <div id="search-results"></div>
+        </div>
+            <label style="margin: auto auto auto 0;max-width: 150px;text-overflow:ellipsis;white-space: nowrap;overflow: hidden">
+                <i class="fal fa-location" style="margin-right: 10px"></i>
+                <label id="location" style="max-width: 100px;font-size: small;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">dshjdbfhjdbfhjbdsfkjsdnfknfhjdbfjsdbklsdf</label></label>
+        <div id="side-options">
+            <label id="username" style="margin-right: 20px"></label>
+            <label id="signin-warning"  class="cursor" style="margin-right: 10px"></label>
+            <i id="cart" class="cursor fal fa-shopping-cart transform" style="margin: auto 15px;color: white"></i>
+            <i id="settings" class="cursor fal fa-cog transform" style="margin: auto 15px;color:white;"></i>
+        </div>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <label id="home" class="sidebarobj cursor"><i class="fal fa-box-full transform"  style="margin-right: 10px"></i>Storage</label>
+            <label id="orders" class="sidebarobj cursor"><i class="fal fa-shopping-basket transform" style="margin-right: 10px"></i>My orders</label>
+            <label id="payment" class="sidebarobj cursor"><i class="far fa-credit-card-front transform" style="margin-right: 10px"></i>Payment</label>
+            <label id="address" class="sidebarobj cursor"><i class="fal fa-address-book transform" style="margin-right: 10px"></i>Address</label>
+        </div>
+        <div id="container-lvl1">
+            <div id="options">
+                <i class="fas fa-chevron-left" id="back" style="transform: scale(1);margin: auto 10px"></i>
+                <label style="font-size: large;margin: auto 10px">Shoes</label>
+            </div>
+            <div id="container-lvl2">
+                <div id="part1">
+                    <div id="shoe-image">
+                        <i class="far fa-boot fa-10x" id="shoe"></i>
+                    </div>
+                </div>
+                <div id="part2" style="padding-top: 50px">
+                    <label id="shoe-name"><%= result.name%></label>
+                    <label id="shoe-brand">from <span style="font-weight: bold;"><%= result.brand%></span></label>
+                    <label id="shoe-currency" style="display: flex;flex-direction: row;">
+                        <% if(result.currency=='rs'){%>
+                            <i class="fal fa-rupee-sign fa-2x" style="margin: auto 1px auto 5px"></i>
+                        <%}%>
+                        <label id="shoe-price"><%= result.price%></label>
+                    </label>
+                    <label>Rating</label>
+                    <div id="rating-star" style="display: flex;flex-direction: row">
+                        <% let x = 0%>
+                        <% for(let i=0;i<Math.floor(result.rating);i++){%>
+                            <i class="fal fa-star"></i>
+                            <% x+=1 %>
+                        <%}%>
+                        <% if(result.rating/10>0){%>
+                            <i class="fal fa-star-half-alt"></i>
+                            <% x+=1%>
+                        <%}%>
+                        <% for(let i=x;i<5;i++){%>
+                            <i class="fal fa-star"></i>
+                        <%}%>
+                        <label id="shoe-rating" style="margin-left: 10px;"><%=result.rating%></label>
+                    </div>
+                    <label>Reviews</label>
+                    <div id="review">
+                        <i class="fal fa-comment-alt-dots cursor" id="read-review" style="margin-right: 10px"></i>
+                        <label id="shoe-review"><%=result.totreview%></label>
+                    </div>
+                    <div id="review-display">
+
+                    </div>
+                    <label>Size<i style="margin-left: 10px" class="fal fa-ruler"></i></label>
+                    <div id="shoe-size">
+                        <% for(let i=0;i<result.size.length;i++){%>
+                        <label class="size cursor" id="size<%=result.size[i]%>"
+                               style="text-align: center;font-size: x-large" class="cursor">
+                            <%=result.size[i]%>
+                        </label>
+                        <%}%>
+                    </div>
+                    <label>Colours</label>
+                    <div id="shoe-colors">
+                        <% for(let i=0;i<result.colours.length;i++){ %>
+                            <div class="colors cursor" style="background: <%=result.colours[i]%>"
+                                 id="<%=result.colours[i]%>"></div>
+                        <%}%>
+                        </div>
+                    <div id="buying" style="margin-top: 20px">
+                        <label id="add-to-cart!!<%=result._id%>" class="cursor atc"><i class="fal fa-cart-plus" style="margin-right: 10px"></i>
+                            Add to cart</label>
+                        <label id="buy-now!!<%=result._id%>" class="cursor bn">Buy now</label>
+                    </div>
+                    <div id="shipping" style="margin-top:    30px">
+                        <label><i class="far fa-shipping-fast fa-2x"></i> This product is available for free shipping</label>
+                    </div>
+                    <div style="font-weight: bolder;margin-top:20px">Product Description</div>
+                    <div>
+                        <ul>
+                        <li id="">Product Dimensions : <%=result.details.Product_dimensions%></li>
+                        <li id="">Item Weight : <%=result.details.Item_weight%></li>
+                        <li id="">Manufacturer : <%=result.details.Manufacturer%></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="pop-up">
+        <label id="msg">jdsnfdnkjd</label>
+    </div>
+</body>
+</html>
+<script src="http://localhost:2000/shoe_view/script.js"></script>
+<script>
+    let cursize=0
+    function size() {
+        let size = document.getElementsByClassName('size')
+        for (let i = 0; i < size.length; i++) {
+            size[i].onclick = (e) => {
+                document.getElementById(cursize).style.backgroundColor = 'white'
+                cursize = e.target.id
+                document.getElementById(cursize).style.backgroundColor = 'whitesmoke'
+            }
+
+        }
+        cursize = size[0].id
+        document.getElementById(cursize).style.backgroundColor = 'whitesmoke'
+    }
+    function colors() {
+        let colors = document.getElementsByClassName('colors')
+        for (let i = 0; i < colors.length; i++) {
+            colors[i].onclick = (e) => {
+                document.getElementById('shoe').style.color = e.target.id
+            }
+        }
+        document.getElementById('shoe').style.color = colors[0].id
+    }
+
+    function init() {
+        colors()
+        size()
+    }
+    setTimeout(init,200)
+</script>

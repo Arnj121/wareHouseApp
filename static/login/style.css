@@ -1,0 +1,85 @@
+body{
+    font-family: "Open Sans",sans-serif;
+}
+#main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+#header{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #212121;
+    color: white;
+    border-style: solid;
+    border-width: 0 0 thin 0;
+    border-color: #d1d1d0;
+    display: flex;
+    flex-direction: row;
+}
+#login{
+    height: 200px;
+    width: 300px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #d1d1d0;
+    margin: auto 0;
+    display: grid;
+    grid-template-rows: 20% 30% 30% 20%;
+    grid-template-columns: 50% 50%;
+    border-radius: 5px;
+}
+#signup{
+    height: 250px;
+    width: 300px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #d1d1d0;
+    margin: auto 0;
+    display: none;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 50% 50%;
+    border-radius: 5px;
+}
+input{
+    outline: none;
+    border-style: solid;
+    border-width: 0 0 thin 0;
+    border-color: #d1d1d0;
+    font-family: "Open Sans",sans-serif;
+    margin: auto;
+    width: 80%;
+    padding-left: 5px;
+}
+#eye ,#eye1{
+    color: #d1d1d0;
+}
+#eye:hover{
+    cursor: pointer;
+}
+#eye1:hover{
+    cursor: pointer;
+}
+button{
+    margin: auto;
+    background-color: white;
+    border-style: solid;
+    border-width: thin;
+    border-color: #d1d1d0;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+button:hover{
+    cursor: pointer;
+}
+#home:hover{
+    cursor: pointer;
+}

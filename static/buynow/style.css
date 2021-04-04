@@ -1,0 +1,250 @@
+body{
+    font-family: "Open Sans",sans-serif;
+    color: #263238;
+    overflow-x: hidden;
+}
+.transform{
+    color: #263238;
+    transform: scale(1.5);
+}
+#header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #212121;
+    color: white;
+    border-style: solid;
+    border-width: 0 0 thin 0;
+    border-color: #d1d1d0;
+    display: flex;
+    flex-direction: row;
+}
+.headerobj{
+    margin: auto 10px;
+}
+#search-div{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 40%;
+    min-width: 400px;
+    height: 50px;
+    margin: auto;
+}
+#search-div-1{
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#search-input{
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    background-color: white;
+    border-style: solid;
+    border-width: 0;
+    outline: none;
+    padding-left: 5px;
+}
+#search-results{
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    background-color: white;
+    z-index: 2;
+    box-shadow: 2px 2px 2px #c0c0bf;
+    border-radius: 0 0 5px 5px;
+}
+.search-obj{
+    padding: 15px 0 15px 10px;
+    color: #252524;
+}
+.search-obj:hover{
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+#side-options{
+    display: flex;
+    flex-direction: row;
+    margin: auto 0 auto auto;
+}
+
+#container{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#sidebar{
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    border-style: solid;
+    border-color: #d1d1d0;
+    border-width: 0 thin 0 0;
+    width: 200px;
+    padding-top: 50px;
+}
+.sidebarobj{
+    max-width: 100%;
+    padding: 10px 0 10px 20px;
+}
+.sidebarobj:hover{
+    background-color: whitesmoke;
+}
+#container-lvl1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#options {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-color: #d1d1d0;
+    border-width: 0 0 thin 0;
+    margin-left: 5px;
+    height: 50px;
+    width: 100%;
+}
+#container-lvl2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+/*jkdsnfsndndkjf*/
+
+.cursor:hover{
+    cursor: pointer;
+}
+@keyframes showpopup {
+    from{
+        max-height: 0;
+        padding: 0 30px 0 10px;
+    }
+    to{
+        max-height: 25px;
+        padding: 5px 30px 5px 10px;
+    }
+}
+@keyframes hidepopup {
+    from{
+        max-height: 25px;
+        padding: 5px 30px 5px 10px;
+    }
+    to{
+        max-height: 0;
+        padding: 0 30px 0 10px;
+    }
+}
+#pop-up{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    max-height: 0;
+    padding: 0 30px 0 10px;
+    background-color: #424242;
+    color: white;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+#name{
+    font-size: xx-large;
+}
+#shoe-details{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 100px;
+}
+#shoe-details label{
+    margin: 10px;
+}
+#shoe-details div{
+    margin: 30px 60px;
+}
+#shoe-config{
+    margin: auto 0;
+}
+#shoe-config label,#shoe-config div{
+    margin: 10px;
+}
+#color{
+    display: flex;
+    flex-direction: row;
+}
+#size{
+    display: flex;
+    flex-direction: row;
+}
+#payment-display{
+    display: flex;
+    flex-direction: column;
+}
+#deliver-display{
+    display: flex;
+    flex-direction: column;
+}
+.size{
+    height: 40px;
+    padding-top: 5px;
+    width: 50px;
+    border-style: solid;
+    border-color: #37474F;
+    border-width: thin;
+    text-align: center;
+    font-size: larger;
+}
+.colors{
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: #37474F;
+    border-width: thin;
+}
+.cards{
+    background-color: #37474F;
+    color: white;
+    width: 300px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    height: 30px;
+    margin: 5px 0 0 0;
+}
+
+.cvv{
+    background-color: #455A64;
+    border-style: solid;
+    border-width: 0;
+    color: white;
+    width: 30px;
+    outline: none;
+    height: 90%;
+    text-align: center;
+    padding:0 5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.address-obj{
+    margin: 10px auto ;
+    border-style: solid;
+    padding: 10px;
+    border-color: #d1d1d0;
+    background-color: #263238;
+    color: white;
+    border-width: thin;
+    border-radius: 5px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+.address-obj label{
+    word-break: break-word;
+}

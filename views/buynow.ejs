@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <link href="http://localhost:2000/warehouse.ico" type="image/icon" rel="icon"/>
+    <link href="http://localhost:2000/buynow/style.css" rel="stylesheet" type="text/css"/>
+    <link href="http://localhost:2045/fontawesome.css" rel="stylesheet" type="text/css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+    </style>
+</head>
+<body>
+    <div id="header">
+        <label style="font-size: x-large;margin: auto 10px auto 20px"><i class="fal fa-warehouse-alt" style="margin-right: 10px;color: white;"></i>TheWarehouse</label>
+        <div id="search-div">
+            <label id="search-div-1">
+                <input type="text" id="search-input" placeholder="Forage The Warehouse">
+                <i id="search-clear" class="fal fa-search" style="transform: scale(1);margin: auto 0 auto -20px;color: #4A148C;"></i>
+            </label>
+            <div id="search-results"></div>
+        </div>
+            <label style="margin: auto auto auto 0;max-width: 150px;text-overflow:ellipsis;white-space: nowrap;overflow: hidden">
+                <i class="fal fa-location" style="margin-right: 10px"></i>
+                <label id="location" style="max-width: 100px;font-size: small;text-overflow: ellipsis;overflow: hidden;white-space: nowrap">dshjdbfhjdbfhjbdsfkjsdnfknfhjdbfjsdbklsdf</label></label>
+        <div id="side-options">
+            <label id="username" style="margin-right: 20px">jkdsnfjs</label>
+            <label id="signin-warning"  class="cursor" style="margin-right: 10px"></label>
+            <i id="cart" class="cursor fal fa-shopping-cart transform" style="margin: auto 15px;color: white"></i>
+            <i id="settings" class="cursor fal fa-cog transform" style="margin: auto 15px;color:white;"></i>
+        </div>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <label id="home" class="sidebarobj cursor"><i class="fal fa-box-full transform"  style="margin-right: 10px"></i>Storage</label>
+            <label id="orders" class="sidebarobj cursor"><i class="fal fa-shopping-basket transform" style="margin-right: 10px"></i>My orders</label>
+            <label id="payment" class="sidebarobj cursor"><i class="far fa-credit-card-front transform" style="margin-right: 10px"></i>Payment</label>
+            <label id="address" class="sidebarobj cursor"><i class="fal fa-address-book transform" style="margin-right: 10px"></i>Address</label>
+        </div>
+        <div id="container-lvl1">
+            <div id="options">
+                <i class="fas fa-chevron-left" id="back" style="transform: scale(1);margin: auto 10px"></i>
+                <label style="margin: auto 10px;font-size: large">Buy now</label>
+            </div>
+            <div id="container-lvl2">
+                <div id="shoe-details">
+                    <label hidden id="type"><%=type%></label>
+                    <label hidden id="id"><%=id%></label>
+                    <label id="name"><%= name%></label>
+                    <label style="font-size: small">from <span style="font-weight: bold"><%= brand %></span>
+                        <span style="font-size: large;margin-left: 5px"><%=rating%></span></label>
+                    <label style="font-size: small">sold by <span style="font-weight: bold"><%=seller%></span></label>
+                    <div id="images">
+                        <i class="fal fa-boot fa-10x" id="shoe"></i>
+                    </div>
+                    <label>you will pay &nbsp
+                        <% if(currency=='rs'){%>
+                            <i class="fal fa-rupee-sign" style="margin-right: 2px"></i>
+                        <%}%>
+                        <span style="font-size: large;font-weight: bold"><%=price%>.00</span>
+                    </label>
+                    <label >Payment Mode</label>
+                    <div id="payment-display" style="margin: 5px">
+                        <%if(payment.length>0){%>
+                            <%for(let i=0;i<payment.length;i++){%>
+                                <%if(payment[i]['type']=='debit'||payment[i]['type'] == 'debit'){%>
+                                    <div class="cards" style="margin: 5px">
+                                        <i class="fal fa-credit-card-front" style="margin-right: 10px"></i>
+                                        <label>card ending <%=payment[i]['cardno'].slice(12,)%></label>
+                                        <input class="cvv" id="<%=payment[i]['cardno'].slice(12,)%>cvv" type="number" placeholder="cvv" oninput="check(event)">
+                                        <label class="cursor" id="<%=payment[i]['cardno'].slice(12,)%>pay" onclick="pay(event)">Pay</label>
+                                    </div>
+                                <%} else {%>
+                                    <div class="cards">
+                                        <label><%=payment[i]['name']%></label>
+                                        <label class="cursor" id="<%=payment[i]['cardno']%>pay" onclick="pay(event)">Pay</label>
+                                    </div>
+                                <%}%>
+                            <%}%>
+                        <%}else{%>
+                            <label class="cards">You have no saved cards</label>
+                        <%}%>
+                    </div>
+                </div>
+                <div id="shoe-config">
+                    <label>Colour</label>
+                    <div id="color">
+                        <% for(let i=0;i<color.length;i++){%>
+                            <div class="colors cursor" id="<%=color[i]%>" style="background-color: <%=color[i]%>"></div>
+                        <%}%>
+                    </div>
+                    <label>Size <i class="fal fa-ruler"></i></label>
+                    <div id="size">
+                        <% for(let i=0;i<size.length;i++){%>
+                            <label class="size cursor" id="size<%=size[i]%>"><%=size[i]%></label>
+                        <%}%>
+                    </div>
+                    <label>Deliver To</label>
+                    <div id="deliver-display">
+                        <%if(address.length>0){%>
+                            <%for(let i=0;i<address.length;i++){%>
+                                <div class="address-obj" >
+                                    <label style="font-size:large">Address #<%=i+1%></label>
+                                    <label id="address<%=i+1%>lbl"><%=address[i].houseno%>,  <%=address[i].address%> ,<%=address[i].street%>,
+                                        <%=address[i].landmark%>, <%=address[i].pin%></label>
+                                    <label id="address<%=i+1%>" class="cursor" onclick="selectaddress(event)">select</label>
+                                </div>
+                            <%}%>
+                        <%}else {%>
+                            <div class="address-obj">
+                                <label>You have no saved addresses</label>
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pop-up">
+        <label id="msg">jdsnfdnkjd</label>
+    </div>
+</body>
+</html>
+
+<script src="http://localhost:2000/buynow/script.js"></script>
+<script>
+    let cursize=0,curcolor=0,curaddress=0
+    function size() {
+        let size = document.getElementsByClassName('size')
+        for (let i = 0; i < size.length; i++) {
+            size[i].onclick = (e) => {
+                document.getElementById(cursize).style.backgroundColor = 'white'
+                cursize = e.target.id
+                document.getElementById(cursize).style.backgroundColor = 'whitesmoke'
+            }
+
+        }
+        cursize = size[0].id
+        document.getElementById(cursize).style.backgroundColor = 'whitesmoke'
+    }
+    function colors() {
+        let colors = document.getElementsByClassName('colors')
+        for (let i = 0; i < colors.length; i++) {
+            colors[i].onclick = (e) => {
+                document.getElementById('shoe').style.color = e.target.id
+            }
+        }
+        document.getElementById('shoe').style.color = colors[0].id
+        curcolor = colors[0].id
+    }
+
+    function init() {
+        colors()
+        size()
+    }
+    function pay(e){
+        let x= e.target.id
+        let id = x.slice(0,-3)
+        let cvv = document.getElementById(id+'cvv').value
+        if(curaddress==0){
+            displaypopup('select an address')
+        }else {
+            let xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    let r = xhr.response
+                    if(r=='error')
+                        displaypopup('Invalid card details')
+                    else {
+                        displaypopup('Order has been placed')
+                        setTimeout(()=>{
+                            window.location.assign(`http://store.warehouse.com:2000/orders`)
+                        },2000)
+                    }
+                }
+            }
+            xhr.open('POST', 'http://localhost:2000/placeorder')
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+            console.log(curaddress);
+            console.log(document.getElementById(curaddress + 'lbl').innerText)
+            xhr.send(JSON.stringify({
+                'cvv': cvv,
+                'userid': userdetails['userid'],
+                'prodid': document.getElementById('id').innerText,
+                'color': curcolor,
+                'size': cursize,
+                'cardno': id,
+                'type':document.getElementById('type').innerText,
+                'address': document.getElementById(curaddress + 'lbl').innerText
+            }))
+        }
+    }
+    function selectaddress(e){
+        console.log(e.target.id)
+        if(curaddress!=0) {
+            document.getElementById(curaddress).parentElement.style.opacity = '1'
+            document.getElementById(curaddress).innerText = 'select'
+        }
+        curaddress = e.target.id
+        document.getElementById(curaddress).parentElement.style.opacity ='0.7'
+        document.getElementById(curaddress).innerText = 'selected'
+    }
+    function check(e){
+        if(e.target.value.length>3){
+            document.getElementById(e.target.id).value=e.target.value.slice(0,3)
+        }
+    }
+    setTimeout(init,200)
+</script>
+
